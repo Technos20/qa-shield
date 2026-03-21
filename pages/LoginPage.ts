@@ -15,9 +15,15 @@ export class LoginPage {
     this.errorMessage = page.locator('p:has-text("Your email or password is incorrect")');
   }
 
+  // async navigate() {
+  //   await this.page.goto('https://automationexercise.com/login');
+  // }
   async navigate() {
-    await this.page.goto('https://automationexercise.com/login');
-  }
+  await this.page.goto('https://automationexercise.com/login', {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000
+  });
+}
 
   async login(email: string, password: string) {
     await this.emailInput.fill(email);
